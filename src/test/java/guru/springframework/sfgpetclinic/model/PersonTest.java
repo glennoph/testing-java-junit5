@@ -16,21 +16,21 @@ class PersonTest {
         System.out.println("given person "+person.toString());
     }
 
-    //@Test
+   // @Test
     void groupedAssertionsFail() {
         System.out.println("then");
         assertAll(
-                ()-> assertEquals("Sam ", person.getFirstName()),
-                ()-> assertEquals("Sans ", person.getLastName())
+                ()-> assertEquals("Sam ", person.getFirstName(), "test getFirstName"),
+                ()-> assertEquals("Sans ", person.getLastName(), "test getLastName")
         );
     }
 
     @Test
     void groupedAssertions() {
-        System.out.println("then");
+        System.out.println("then test first/last name");
         assertAll(
-                ()-> assertEquals("Sam", person.getFirstName()),
-                ()-> assertEquals("Sans", person.getLastName())
+                ()-> assertEquals("Sam", person.getFirstName(), "test getFirstName"),
+                ()-> assertEquals("Sans", person.getLastName(), "test getLastName")
         );
     }
 
