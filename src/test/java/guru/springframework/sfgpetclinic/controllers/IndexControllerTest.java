@@ -23,9 +23,12 @@ class IndexControllerTest {
 
     @Test
     void index() {
+        assertEquals("index", indexController.index(), "test index");
     }
 
     @Test
     void oupsHandler() {
+        assertEquals("notimplemented", indexController.oupsHandler(),
+                ()->"lambda expression for failed oupsHandler test");
     }
 }
