@@ -1,6 +1,7 @@
 package guru.springframework.sfgpetclinic.model;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,7 +17,8 @@ class PersonTest {
         System.out.println("given person "+person.toString());
     }
 
-   // @Test
+    @Test
+    @Disabled("failing tests")
     void groupedAssertionsFail() {
         System.out.println("then");
         assertAll(
