@@ -31,4 +31,11 @@ class IndexControllerTest {
         assertEquals("notimplemented", indexController.oupsHandler(),
                 ()->"lambda expression for failed oupsHandler test");
     }
+
+    @Test
+    void oopsHandlerException() throws ValueNotFoundException {
+        assertThrows(ValueNotFoundException.class,
+                ()->  indexController.oopsHandlerException() , "test oopsHandlerException"
+        );
+    }
 }
