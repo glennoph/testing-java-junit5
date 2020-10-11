@@ -10,6 +10,8 @@ import guru.springframework.sfgpetclinic.testimpl.ModelMapImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class VetControllerTest {
@@ -36,5 +38,10 @@ class VetControllerTest {
 
         String view = vetController.listVets(model);
         assertEquals("vets/index", view, "test listVets model view");
+
+        // check that there are 2 vets tbd
+        Set vetSet = (Set) ((ModelMapImpl) model).getMap().get("vets");
+        assertEquals(2, vetSet.size(), "test number of vets");
+
     }
 }
