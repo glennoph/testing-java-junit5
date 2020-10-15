@@ -1,15 +1,18 @@
 package guru.springframework.sfgpetclinic.model;
 
 import guru.springframework.sfgpetclinic.ModelTests;
-import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class OwnerTest implements ModelTests {
     @Test
     void dependentAssertions() {
-        Owner owner = new Owner(11l, "Sam", "Sand");
+        Owner owner = new Owner(11L, "Sam", "Sand");
         owner.setCity("San Jose");
         owner.setAddress("123 Main St");
 
@@ -25,4 +28,21 @@ class OwnerTest implements ModelTests {
         );
     }
 
+    @DisplayName("owner value src tests ABC")
+    @ParameterizedTest(name = "{displayName} - [{index}] {arguments}")
+    @ValueSource(strings = {"A", "B", "C"})
+    void testValueSrc(String val) {
+        System.out.println("val: "+val);
+    }
+
+    @ParameterizedTest
+    @DisplayName("csv test")
+    @CsvSource(value = {
+            "a, 10, 12",
+            "b, 20, 21",
+            "c, 30, 31"
+    })
+    void csvTest(String let, String i1, String i2) {
+        System.out.println("letter:"+let+" i1:"+i1+" i2:"+i2);
+    }
 }
