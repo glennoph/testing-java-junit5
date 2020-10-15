@@ -4,6 +4,7 @@ import guru.springframework.sfgpetclinic.ModelTests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -36,13 +37,22 @@ class OwnerTest implements ModelTests {
     }
 
     @ParameterizedTest
-    @DisplayName("csv test")
+    @DisplayName("csv source test")
     @CsvSource(value = {
             "a, 10, 12",
             "b, 20, 21",
             "c, 30, 31"
     })
-    void csvTest(String let, String i1, String i2) {
+    void csvSourceTest(String let, String i1, String i2) {
         System.out.println("letter:"+let+" i1:"+i1+" i2:"+i2);
     }
+
+
+    @ParameterizedTest
+    @DisplayName("csv file test")
+    @CsvFileSource(resources = "/csvfile.csv", numLinesToSkip = 1) // csv file is in resources folder, skip first line
+    void csvFileTest(String let, String i1, String i2) {
+        System.out.println("letter:"+let+" i1:"+i1+" i2:"+i2);
+    }
+
 }
