@@ -4,9 +4,7 @@ import guru.springframework.sfgpetclinic.ModelTests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -52,6 +50,14 @@ class OwnerTest implements ModelTests {
     @DisplayName("csv file test")
     @CsvFileSource(resources = "/csvfile.csv", numLinesToSkip = 1) // csv file is in resources folder, skip first line
     void csvFileTest(String let, String i1, String i2) {
+        System.out.println("letter:"+let+" i1:"+i1+" i2:"+i2);
+    }
+
+
+    @ParameterizedTest
+    @DisplayName("custom provider test")
+    @ArgumentsSource(CustomArgsProvider.class)
+    void fromCustomProviderTest(String let, int i1, int i2) {
         System.out.println("letter:"+let+" i1:"+i1+" i2:"+i2);
     }
 
